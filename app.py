@@ -22,7 +22,7 @@ st.markdown("Upload a PDF and ask anything. This AI will search your document an
 @st.cache_resource
 def load_models():
     embedder = SentenceTransformer("all-MiniLM-L6-v2")
-    qa = pipeline("question-answering", model="deepset/roberta-base-squad2")
+    qa = pipeline("question-answering", model="bert-large-uncased-whole-word-masking-finetuned-squad")
     return embedder, qa
 
 embedder, qa_model = load_models()
