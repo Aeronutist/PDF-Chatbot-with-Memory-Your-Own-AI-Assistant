@@ -30,7 +30,7 @@ embedder, qa_model = load_models()
 # PDF Upload
 uploaded_file = st.file_uploader("📁 Upload PDF", type=["pdf"])
 if uploaded_file:
-        with pdfplumber.open(uploaded_file) as pdf:
+    with pdfplumber.open(uploaded_file) as pdf:
         raw_text = ""
         for page in pdf.pages:
             text = page.extract_text()
