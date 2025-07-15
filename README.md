@@ -3,7 +3,7 @@
 A smart AI app that reads your PDF, splits it into chunks, and answers your natural language questions using semantic search and transformers.  
 Built with FAISS + Sentence Transformers + Hugging Face QA models.
 
-🔗 **Live App**: [Click to Open](https://your-streamlit-url)  
+🔗 **Live App**: [Click to Open]( https://pdf-chatbot-with-memory-your-own-ai-assistant-nmsjldiszsgoyrmb.streamlit.app/ ) 
 📦 **Supports**: PDF  
 💬 **Search Type**: Semantic / Vector-Based  
 🧠 **Model**: Roberta (SQuAD2) + MiniLM-L6
