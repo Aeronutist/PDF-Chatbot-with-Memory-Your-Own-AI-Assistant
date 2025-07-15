@@ -5,7 +5,16 @@ import faiss
 import numpy as np
 import pdfplumber
 import os
+import re
 
+# Fix spacing in badly extracted text
+def clean_text(text):
+    # Remove multiple spaces and line breaks
+    text = re.sub(r'\s+', ' ', text)
+    # Remove spaces before punctuation
+    text = re.sub(r'\s([?.!,:;])', r'\1', text)
+    return text.strip()
+    
 st.set_page_config(page_title="Ask Your PDF – Vector QA", layout="centered")
 st.title("📄 Ask Your PDF – Smart Search AI")
 st.markdown("Upload a PDF and ask anything. This AI will search your document and answer using semantic retrieval.")
@@ -21,12 +30,16 @@ embedder, qa_model = load_models()
 # PDF Upload
 uploaded_file = st.file_uploader("📁 Upload PDF", type=["pdf"])
 if uploaded_file:
-    with pdfplumber.open(uploaded_file) as pdf:
+        with pdfplumber.open(uploaded_file) as pdf:
         raw_text = ""
         for page in pdf.pages:
             text = page.extract_text()
             if text:
                 raw_text += text + "\n"
+
+    # Clean and normalize spacing
+    raw_text = clean_text(raw_text)
+
 
     # Chunking
     def chunk_text(text, size=500, overlap=50):
