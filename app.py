@@ -17,7 +17,8 @@ def clean_text(text):
     
 st.set_page_config(page_title="Ask Your PDF – Vector QA", layout="centered")
 st.title("📄 Ask Your PDF – Smart Search AI")
-st.markdown("Upload a PDF and ask anything. This AI will search your document and answer using semantic retrieval.")
+st.markdown("Upload a PDF and ask anything.
+⚠️make sure pdf file not creted by scan copy it must generate in write means pdf encoded. This AI will search your document and answer using semantic retrieval.")
 
 @st.cache_resource
 def load_models():
